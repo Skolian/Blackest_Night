@@ -1,0 +1,42 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_08.png" type="Texture" id=1]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_10.png" type="Texture" id=2]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_11.png" type="Texture" id=3]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_05.png" type="Texture" id=4]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_07.png" type="Texture" id=5]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_04.png" type="Texture" id=6]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_09.png" type="Texture" id=7]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_03.png" type="Texture" id=8]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_06.png" type="Texture" id=9]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_00.png" type="Texture" id=10]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_01.png" type="Texture" id=11]
+[ext_resource path="res://SPRITES FOR PROJECT/pickupleaf/sprite_02.png" type="Texture" id=12]
+[ext_resource path="res://LEAFSPEED.gd" type="Script" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[node name="LEAFESPEED" type="Area2D"]
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+frame = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -2.75 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_LEAFESPEED_body_entered"]
